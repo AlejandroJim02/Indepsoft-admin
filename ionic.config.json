@@ -1,5 +1,7 @@
 {
   "name": "AdminProyecto",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

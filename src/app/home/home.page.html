@@ -1,20 +1,126 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+<ion-menu side="start" menuId="adminmenu" contentId="adminmenu">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-list>
+      <!--ion-item (click)="goPerfil()"><ion-icon class="icon-option" name="person-circle-outline"></ion-icon>Perfil</ion-item>
+      <ion-item (click)="goContratos()"><ion-icon class="icon-option" name="document-text-outline"></ion-icon> Contratos</ion-item-->
+      <ion-item (click)="goCerrarSesion()"><ion-icon class="icon-option" name="log-out-outline"></ion-icon> Cerrar Sesión</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet [swipeGesture]="false" id="adminmenu"></ion-router-outlet>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-backdrop *ngIf="loader" class="bd-complete" tappable="false"></ion-backdrop>
+<ion-spinner *ngIf="loader" class="spinner" name="bubbles"></ion-spinner>
+<ion-header class="ion-no-border">
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="10" class="homeblock-title">
+        <b>LISTADO DE TRABAJADORES</b>
+      </ion-col>
+      <ion-col (click)="openMenu()" class="menu" size="2">
+        <ion-icon class="menu-icon" name="menu-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<!--Para borrar las rayas usamos [fullscreen]="true" -->
+<ion-content [fullscreen]="true">
+  <!--Combo boxes listado-->
+  <ion-item class="homeblock-item">
+    <ion-label>Distrito</ion-label>
+    <ion-select [(ngModel)]="distrito" (ionChange)="listar()" interface="popover">
+      <ion-select-option value="all">Todo</ion-select-option>
+      <ion-select-option value="Cercado de Lima">Cercado de Lima</ion-select-option>
+      <ion-select-option value="Ancón">Ancón</ion-select-option>
+      <ion-select-option value="Ate Vitarte">Ate Vitarte</ion-select-option>
+      <ion-select-option value="Barranco">Barranco</ion-select-option>
+      <ion-select-option value="Breña">Breña</ion-select-option>
+      <ion-select-option value="Carabayllo">Carabayllo</ion-select-option>
+      <ion-select-option value="Comas">Comas</ion-select-option>
+      <ion-select-option value="Chaclacayo">Chaclacayo</ion-select-option>
+      <ion-select-option value="Chorrillos">Chorrillos</ion-select-option>
+      <ion-select-option value="El Agustino">El Agustino</ion-select-option>
+      <ion-select-option value="Jesús María">Jesús María</ion-select-option>
+      <ion-select-option value="La Molina">La Molina</ion-select-option>
+      <ion-select-option value="La Victoria">La Victoria</ion-select-option>
+      <ion-select-option value="Lince">Lince</ion-select-option>
+      <ion-select-option value="Lurigancho">Lurigancho (Chosica)</ion-select-option>
+      <ion-select-option value="Lurín">Lurín</ion-select-option>
+      <ion-select-option value="Magdalena del Mar">Magdalena del Mar</ion-select-option>
+      <ion-select-option value="Miraflores">Miraflores</ion-select-option>
+      <ion-select-option value="Pachacamac">Pachacamac</ion-select-option>
+      <ion-select-option value="Pucusana">Pucusana</ion-select-option>
+      <ion-select-option value="Pueblo Libre">Pueblo Libre</ion-select-option>
+      <ion-select-option value="Puente Piedra">Puente Piedra</ion-select-option>
+      <ion-select-option value="Punta Negra">Punta Negra</ion-select-option>
+      <ion-select-option value="Punta Hermosa">Punta Hermosa</ion-select-option>
+      <ion-select-option value="Rímac">Rímac</ion-select-option>
+      <ion-select-option value="San Bartolo">San Bartolo</ion-select-option>
+      <ion-select-option value="San Isidro">San Isidro</ion-select-option>
+      <ion-select-option value="Independencia">Independencia</ion-select-option>
+      <ion-select-option value="San Juan de Miraflores">San Juan de Miraflores</ion-select-option>
+      <ion-select-option value="San Luis">San Luis</ion-select-option>
+      <ion-select-option value="San Martín de Porres">San Martín de Porres</ion-select-option>
+      <ion-select-option value="San Miguel">San Miguel</ion-select-option>
+      <ion-select-option value="Santiago de Surco">Santiago de Surco</ion-select-option>
+      <ion-select-option value="Surquillo">Surquillo</ion-select-option>
+      <ion-select-option value="Villa María del Triunfo">Villa María del Triunfo</ion-select-option>
+      <ion-select-option value="San Juan de Lurigancho">San Juan de Lurigancho</ion-select-option>
+      <ion-select-option value="Santa María del Mar">Santa María del Mar</ion-select-option>
+      <ion-select-option value="Santa Rosa">Santa Rosa</ion-select-option>
+      <ion-select-option value="Los Olivos">Los Olivos</ion-select-option>
+      <ion-select-option value="Cieneguilla">Cieneguilla</ion-select-option>
+      <ion-select-option value="San Borja">San Borja</ion-select-option>
+      <ion-select-option value="Villa El Salvador">Villa El Salvador</ion-select-option>
+      <ion-select-option value="Santa Anita">Santa Anita</ion-select-option>
+      <ion-select-option value="Ricardo Palma">Ricardo Palma</ion-select-option>
+      <ion-select-option value="Santa Eulalia">Santa Eulalia</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="homeblock-item lastcombo">
+    <ion-label>Usuario</ion-label>
+    <ion-select [(ngModel)]="tipo_usuario" (ionChange)="listar()" interface="popover">
+      <ion-select-option value="trabajador">Trabajador</ion-select-option>
+      <ion-select-option value="solicitante">Solicitante</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!--Listado de Trabajadores-->
+  <ion-item *ngIf="!empty_mensaje" class="homeblock_usuario">
+    <ion-grid class="homeblock_usuario_grid">
+      <ion-row *ngFor="let usuario of usuarios; let i=index" class="ion-align-items-center ion-no-padding homeblock_usuario_grid-row">
+        <ion-col size="8">
+          <ion-grid class="homeblock_usuario_grid-names" fixed>
+            <ion-row>
+              <ion-col size="12">{{usuario.nombre}} {{usuario.apellidoPaterno}} {{usuario.apellidoMaterno}}</ion-col>
+              <ion-col size="12"><b>DNI: </b>{{usuario.dni}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col class="homeblock_usuario_grid-centercol" size="4">
+          <ion-toggle [(ngModel)]="usuario.estadoUsuario" (click)="cambiarEstado(i,usuario.dni)" ></ion-toggle>
+          <ion-label *ngIf="usuario.estadoUsuario" class="homeblock_usuario_grid-label">Habilitado</ion-label>
+          <ion-label *ngIf="!usuario.estadoUsuario" class="homeblock_usuario_grid-label">Deshabilitado</ion-label>
+          <p class="data-error" *ngIf="usuario.flag">Error cambiando estado.</p>
+        </ion-col>
+        <!--ion-col class="homeblock_usuario_grid-centercol" size="4">
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12"><ion-icon class="homeblock_usuario_grid-icon" name="warning-outline"></ion-icon></ion-col>
+              <ion-col size="12" class="homeblock_usuario_grid-label">Denuncia</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col-->
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <p class="no-data" *ngIf="empty_mensaje">Aún no se han agregado estos usuarios.</p>
+
 </ion-content>

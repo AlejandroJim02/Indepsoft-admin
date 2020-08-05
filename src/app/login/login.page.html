@@ -1,0 +1,24 @@
+<ion-backdrop *ngIf="loader" class="bd-complete" tappable="false"></ion-backdrop>
+<ion-spinner *ngIf="loader" class="spinner" name="bubbles"></ion-spinner>
+<ion-content>
+  <ion-grid>
+    <ion-row class="loginblock ion-align-items-start">
+      <ion-col size="12" class="loginblock-message"><b>Bienvenido administrador</b></ion-col>
+      <ion-col size="12" class="loginblock_profile">
+        <img class="loginblock_profile-img" src="./assets/img/A.png" alt="">
+        <ion-item class="loginblock_profile-input">
+          <ion-label position="floating">DNI</ion-label>
+          <ion-input [(ngModel)]="dni"></ion-input>
+        </ion-item>
+        <ion-item class="loginblock_profile-input">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+        <p *ngIf="mensaje" class="mensaje-error">{{contenido_mensaje}}</p>
+        <ion-button class="loginblock_profile-login" (click)="login()" fill="solid">
+          Iniciar Sesión
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

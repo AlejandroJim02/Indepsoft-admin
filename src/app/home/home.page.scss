@@ -1,27 +1,57 @@
-#container {
+.menu{
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  &-icon{
+    font-size: 30px;
+    padding: 10%;
+  }
 }
-
-#container strong {
+.homeblock{
+  &-title{
+    text-align: center;
+  }
+  &-item{
+    padding:3%;
+    --background:rgb(241 241 241);
+  }
+  &_usuario{
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    &_grid{
+      padding: 0;
+      &-row{
+        border-bottom: solid .5px black;
+      }
+      &-names{
+        font-size: 13px;
+        text-transform: capitalize;
+      }
+      &-centercol{
+        text-align: center;
+      }
+      &-icon{
+        font-size: 35px;
+        color:red;
+      }
+      &-label{
+        font-size: 15px;
+      }
+    }
+  }
+}
+.lastcombo{
+  padding-bottom:6%;
+}
+.bd-complete{
+  z-index: 20;
+}
+.data-error{
+  color: red;
+  font-size: 12px;
+}
+.no-data{
   font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+  text-align: center;
+  margin: 10%;
 }

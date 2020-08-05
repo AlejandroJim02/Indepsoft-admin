@@ -24,3 +24,23 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@font-face {
+    font-family: 'Graphik';
+    src: url('src/assets/fonts/Graphik-Light.ttf');
+}
+*{
+    font-family: 'Graphik';
+}
+ion-header{
+    color:black;
+    background-color: white;
+}
+ion-backdrop{
+    opacity: 0.3;
+}
+ion-spinner{
+    z-index: 30;
+    position: absolute;
+    transform: scale(1.5);
+    margin: 40vh 47%;
+}

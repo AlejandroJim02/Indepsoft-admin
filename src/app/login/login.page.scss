@@ -1,0 +1,34 @@
+.loginblock{
+    &-message{
+        padding-top: 10vh;
+        padding-bottom: 3vh;
+        font-size: 20px;
+        text-align: center;
+    }
+    &_profile{
+        text-align: center;
+        &-img{
+            height: 18vh;
+            border-radius: 50%; 
+        }
+        &-input{
+            width: 90%;
+            margin: auto;
+        }
+        &-login{
+            width: 90%;
+            margin-top: 10%;
+        }
+        &-register{
+            text-decoration: underline;
+        }
+    }
+    
+}
+.mensaje-error{
+    color:red;
+    margin:1vh 10%;
+}
+.bd-complete{
+    z-index: 20;
+}
