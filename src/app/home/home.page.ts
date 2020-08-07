@@ -64,7 +64,9 @@ export class HomePage {
           this.loader=false;
         }else{
           this.empty_mensaje=true;
+          localStorage.clear();
           this.loader=false;
+          this.router.navigate(['/login']);
         }
       },
       error=>{
